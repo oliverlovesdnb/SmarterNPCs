@@ -12,7 +12,7 @@ NavMeshProjectSettings:
   - name: Jump
     cost: 2
   - name: Road
-    cost: 25
+    cost: 4
   - name: Footpath
     cost: 1
   - name: 
@@ -69,7 +69,7 @@ NavMeshProjectSettings:
     cost: 1
   - name: 
     cost: 1
-  m_LastAgentTypeID: -887442657
+  m_LastAgentTypeID: -1372625422
   m_Settings:
   - serializedVersion: 3
     agentTypeID: 0
