@@ -531,7 +531,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 473cc12ee6e93fe4bb59c4e5582e807f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &707950409
 Transform:
@@ -576,6 +576,9 @@ GameObject:
   - component: {fileID: 764946362}
   - component: {fileID: 764946361}
   - component: {fileID: 764946360}
+  - component: {fileID: 764946367}
+  - component: {fileID: 764946365}
+  - component: {fileID: 764946366}
   - component: {fileID: 764946359}
   m_Layer: 0
   m_Name: Player (1)
@@ -709,6 +712,49 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 2910672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &764946365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764946358}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73090b15a2e2b4488cd9aea527a2739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &764946366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764946358}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
+--- !u!114 &764946367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764946358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96669d06588171543b17d89a408688ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &798056296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,7 +1232,6 @@ GameObject:
   - component: {fileID: 1155842457}
   - component: {fileID: 1155842456}
   - component: {fileID: 1155842461}
-  - component: {fileID: 1155842462}
   - component: {fileID: 1155842464}
   - component: {fileID: 1155842465}
   m_Layer: 6
@@ -1301,18 +1346,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!114 &1155842462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155842455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e73090b15a2e2b4488cd9aea527a2739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1155842464
 MonoBehaviour:
   m_ObjectHideFlags: 0
