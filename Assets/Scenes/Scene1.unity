@@ -852,7 +852,6 @@ GameObject:
   - component: {fileID: 764946362}
   - component: {fileID: 764946361}
   - component: {fileID: 764946360}
-  - component: {fileID: 764946367}
   - component: {fileID: 764946365}
   - component: {fileID: 764946366}
   - component: {fileID: 764946359}
@@ -1019,18 +1018,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!114 &764946367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764946358}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96669d06588171543b17d89a408688ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &798056296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2155,6 @@ GameObject:
   - component: {fileID: 1742674212}
   - component: {fileID: 1742674211}
   - component: {fileID: 1742674215}
-  - component: {fileID: 1742674217}
   - component: {fileID: 1742674218}
   - component: {fileID: 1742674216}
   m_Layer: 0
@@ -2302,20 +2288,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1742674217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742674210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8427152508f80a342838980b44c11b1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roadAreaCost: 1
-  footpathAreaCost: 2
 --- !u!114 &1742674218
 MonoBehaviour:
   m_ObjectHideFlags: 0

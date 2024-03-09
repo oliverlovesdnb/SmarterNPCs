@@ -9,12 +9,11 @@ public class CrosswalkManager : MonoBehaviour
     void Start()
     {
         navMeshModifier = GetComponent<NavMeshModifier>();
-        navMeshModifier.ignoreFromBuild = true;  // Initially, ignore from build
+        navMeshModifier.ignoreFromBuild = true; 
     }
 
     void Update()
     {
-        // Assuming there's some condition for deciding it's safe to cross
         if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("space key was pressed");
@@ -32,10 +31,9 @@ public class CrosswalkManager : MonoBehaviour
 
     void EnableCrosswalk()
     {
-        navMeshModifier.ignoreFromBuild = false;  // Enable the crosswalk area
+        navMeshModifier.ignoreFromBuild = false; 
         NavMeshSurface[] surfaces = FindObjectsOfType<NavMeshSurface>();
 
-        // Update the NavMesh surfaces to reflect the changes
         foreach (NavMeshSurface surface in surfaces)
         {
             surface.BuildNavMesh();
