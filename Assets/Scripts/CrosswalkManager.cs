@@ -13,7 +13,7 @@ public class CrosswalkManager : MonoBehaviour
         navMeshModifier.ignoreFromBuild = true; 
     }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -23,7 +23,7 @@ public class CrosswalkManager : MonoBehaviour
                 EnableCrosswalk();
             }
         }
-    }
+    }*/
 
     bool CanCrossSafely()
     {
@@ -31,16 +31,17 @@ public class CrosswalkManager : MonoBehaviour
         return true;
     }
 
-    void EnableCrosswalk()
+    public void EnableCrosswalk(int id)
     {
-        Debug.Log("enabling navmesh modifier");
+        Debug.Log("enabling navmesh for: "+id);
         navMeshModifier.ignoreFromBuild = false; 
         NavMeshSurface[] surfaces = GetComponents<NavMeshSurface>();
-        Debug.Log(surfaces.Count());
-        foreach (NavMeshSurface surface in surfaces){
+        //Debug.Log(surfaces.Count());
+        /*foreach (NavMeshSurface surface in surfaces){
             
             surface.BuildNavMesh();
-        }
+        }*/
+        surfaces[id].BuildNavMesh();
             
     }
 }
