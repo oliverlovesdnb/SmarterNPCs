@@ -386,7 +386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &271591469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,7 +1029,7 @@ Transform:
   m_GameObject: {fileID: 764946358}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.8700008, y: 9.361368, z: 6.5}
+  m_LocalPosition: {x: 0.58, y: 9.361368, z: 6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1068,6 +1068,9 @@ MonoBehaviour:
   - {fileID: 1272123656}
   - {fileID: 1873213021}
   - {fileID: 768501326}
+  Car:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &768501325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,7 +1189,7 @@ GameObject:
   - component: {fileID: 798056298}
   - component: {fileID: 798056297}
   - component: {fileID: 798056301}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Car
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -1273,7 +1276,7 @@ Transform:
   m_GameObject: {fileID: 798056296}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.29237175, z: -0, w: 0.9563048}
-  m_LocalPosition: {x: -31.42, y: 1.77, z: 11.81}
+  m_LocalPosition: {x: -9.64, y: 1.77, z: 1.11}
   m_LocalScale: {x: 15, y: 2, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2844,7 +2847,7 @@ Transform:
   m_GameObject: {fileID: 1873213020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.15, y: 1.12, z: 11.06}
+  m_LocalPosition: {x: -0.68, y: 1.12, z: 10.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
