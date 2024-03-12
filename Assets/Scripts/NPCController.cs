@@ -13,11 +13,8 @@ public class NPCController : MonoBehaviour
     public Transform Target;
     public NavMeshAgent agent;
 
-    //Timer for measuring travel time
-    Stopwatch stopwatch = new Stopwatch();
     void Awake()
     {
-        stopwatch.Start();
     }
     void Update()
     {
@@ -35,8 +32,6 @@ public class NPCController : MonoBehaviour
         {
             //Sets destination as final node rather than next node in list
             agent.SetDestination(Target.position);
-            long elapsedTime = stopwatch.ElapsedMilliseconds;
-            //UnityEngine.Debug.Log("NavMesh NPC reached target, time: " + elapsedTime + "ms");
         }
     }
 }
