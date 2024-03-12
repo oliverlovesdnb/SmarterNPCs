@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Road
+  - Car
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Road
   - Footpath
   - Obstacles
-  - 
+  - Car
   - 
   - 
   - 
