@@ -727,7 +727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &674376903
 Transform:
   m_ObjectHideFlags: 0
@@ -1175,10 +1175,10 @@ MonoBehaviour:
   - {fileID: 1430505252}
   - {fileID: 1272123656}
   - {fileID: 179764253}
+  - {fileID: 1497816330}
   - {fileID: 1873213021}
   - {fileID: 927099387}
   - {fileID: 768501326}
-  - {fileID: 1497816330}
   Car:
     serializedVersion: 2
     m_Bits: 512
@@ -1731,7 +1731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &979835262
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1876,7 +1876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1040647221
 Transform:
   m_ObjectHideFlags: 0
@@ -2461,7 +2461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1494430457
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2765,7 +2765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1729625602
 Transform:
   m_ObjectHideFlags: 0
@@ -2910,7 +2910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1742674211
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3265,7 +3265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2123871123
 Transform:
   m_ObjectHideFlags: 0
