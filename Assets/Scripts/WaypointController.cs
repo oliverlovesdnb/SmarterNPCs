@@ -25,7 +25,6 @@ public class WaypointController : MonoBehaviour
     private bool currentlyRotating = false;
     private bool firstPoint = true;
 
-
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -56,14 +55,22 @@ public class WaypointController : MonoBehaviour
                 RoadCheckNow();
                 return;
                 
+
+            }
+            if (pathIndex > 1 && isRoadCheck(pathIndex - 2 ) && isRoadCheck(pathIndex))
+            {
+                int randomNumber = Random.Range(0, 2);
+
+                Debug.Log("Rnd Number" + randomNumber);
+                pathIndex -= randomNumber * 2;
+                roadCheckNext = true;
             }
             else if (isRoadCheck(pathIndex))
             {
-                
-                
                 Debug.Log("Road Check Next!");
                 roadCheckNext=true;
             }
+            
             else if(pathIndex > 1 && isRoadCheck(pathIndex - 1))
             {
                 Debug.Log("PathIndex before" + pathIndex);
