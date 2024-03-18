@@ -1,48 +1,82 @@
+/*
+    Code created by Oliver Fiedot-Davies, 2024
+    For Maynooth University Computer Science and Software Engineering Final Year Project.
+
+    Some code sampled from Unity Documentation: https://docs.unity3d.com/560/Documentation/Manual/nav-AgentPatrol.html
+*/
+
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class WaypointController : MonoBehaviour
 {
     public Transform[] waypoints;
-    private int currentWaypointIndex = 0;
     private NavMeshAgent agent;
-    RaycastHit hit;
 
+    RaycastHit hit;
     public LayerMask Car;
 
-    private bool roadCheckNext = false;
-    private bool roadClear = false;
-    private bool carHit = false;
-    private bool rotating = false;
+    private int pathIndex = 0;
+    private int roadCheckCount = 0;
 
+    private bool roadCheckNext = false;
+    private bool carHit = false;
+    private bool currentlyRotating = false;
+    private bool firstPoint = true;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            if (waypoints[i].transform.name.ToString().Contains("RoadCheck")) roadCheckCount++;
+        }
+
         NextPoint();
     }
 
     void Update()
     {
-        if (rotating == true){
+        if (currentlyRotating == true)
+        {
             return;
         }
 
         if (agent.remainingDistance < 0.5f && !agent.pathPending)
         {
+            if (firstPoint)
+            {
+                pathIndex--;
+                firstPoint = false;
+            }
             if (roadCheckNext)
             {
-                RoadCheckNext();
+                RoadCheckNow();
                 return;
+                
+
             }
-            if (waypoints[currentWaypointIndex].transform.name.ToString().Contains("RoadCheck"))
+            if (pathIndex > 1 && isRoadCheck(pathIndex - 2 ) && isRoadCheck(pathIndex))
             {
-                Debug.Log(currentWaypointIndex);
+                int randomNumber = Random.Range(0, 2);
+
+                Debug.Log("Rnd Number" + randomNumber);
+                pathIndex -= randomNumber * 2;
+                roadCheckNext = true;
+            }
+            else if (isRoadCheck(pathIndex))
+            {
                 Debug.Log("Road Check Next!");
                 roadCheckNext=true;
-
+            }
+            
+            else if(pathIndex > 1 && isRoadCheck(pathIndex - 1))
+            {
+                Debug.Log("PathIndex before" + pathIndex);
+                pathIndex -= 2;
+                Debug.Log("PathIndex now" + pathIndex);
+                roadCheckNext = true;
             }
             NextPoint();
         }
@@ -58,14 +92,13 @@ public class WaypointController : MonoBehaviour
     }
 
 
-    void RoadCheckNext()
+    void RoadCheckNow()
     {
         Debug.Log("Road Check Now!");
-        roadClear = false;
         agent.isStopped = true;
 
-        Vector3 direction = (waypoints[currentWaypointIndex].position - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        Vector3 direction = waypoints[pathIndex].position - transform.position;
+        transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
         RoadCheck();
 
         Debug.Log("Escaped RoadCheck");
@@ -78,11 +111,8 @@ public class WaypointController : MonoBehaviour
         if (waypoints.Length == 0) return;
         
         
-        agent.SetDestination(waypoints[currentWaypointIndex].position);
-        currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
-
-       
-
+        agent.SetDestination(waypoints[pathIndex].position);
+        pathIndex = (pathIndex + 1) % waypoints.Length;
     }
 
     void RoadCheck()
@@ -91,37 +121,48 @@ public class WaypointController : MonoBehaviour
     }
     IEnumerator RotateLeftAndRight()
     {
-        // Rotate left
-        yield return StartCoroutine(Rotate(Quaternion.Euler(0, -90, 0)));
+        yield return StartCoroutine(RotateToTarget(Quaternion.Euler(0, -80, 0)));
+        yield return StartCoroutine(RotateToTarget(Quaternion.Euler(0, 80, 0)));
 
-        // Rotate right
-        yield return StartCoroutine(Rotate(Quaternion.Euler(0, 90, 0)));
-        if (carHit) 
+        if (carHit)
         {
             Debug.Log("AAH CAR!");
-            RoadCheck();
+            currentlyRotating = false;
         }
-        else rotating = false;
+
+        else
+        {
+            pathIndex += roadCheckCount-1;
+            currentlyRotating = false;
+            NextPoint();
+        }
+        
     }
 
-    IEnumerator Rotate(Quaternion targetRotation)
+    IEnumerator RotateToTarget(Quaternion finalRotation)
     {
         carHit = false;
-        rotating = true;
-        Quaternion startRotation = transform.rotation;
-        float elapsedTime = 0;
-        float duration = 1f; // Adjust as needed
+        currentlyRotating = true;
+        Quaternion initialRotation = transform.rotation;
 
-        while (elapsedTime < duration)
+        float rotationSpeed = 0.9f;
+        float counter = 0;
+        
+
+        while (counter < rotationSpeed)
         {
-            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(initialRotation, finalRotation, counter / rotationSpeed);
+            counter += Time.deltaTime;
             CheckCarHit();
             yield return null;
         }
-        
 
-        transform.rotation = targetRotation;
+        transform.rotation = finalRotation;
         
+    }
+
+    bool isRoadCheck(int _pathIndex)
+    {
+        return waypoints[_pathIndex].transform.name.ToString().Contains("RoadCheck");
     }
 }
