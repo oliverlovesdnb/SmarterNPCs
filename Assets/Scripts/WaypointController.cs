@@ -31,6 +31,7 @@ public class WaypointController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         NextPoint();
+        //Application.targetFrameRate = 30;
     }
 
     void Update()
