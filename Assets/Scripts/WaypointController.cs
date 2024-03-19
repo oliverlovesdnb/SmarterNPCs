@@ -94,17 +94,40 @@ public class WaypointController : MonoBehaviour
         //Getting crossing ID from object name
         string roadCheckID = waypoints[pathIndex - 1].transform.name.ToString();
 
+        roadCheckID = roadCheckID.Substring(roadCheckID.Length - 2, 2);
+        roadCheckCount = roadCheckCounter(roadCheckID);
+        Debug.Log(roadCheckID);
         //Variables relating to each crossing
-        turnAngleL = Int32.Parse(roadCheckID.Substring(roadCheckID.Length - 4, 4));
-        turnAngleR = -turnAngleL;
+        switch (roadCheckID)
+        {
+            case "C1":
+                turnAngleL = 80;
+                turnAngleR = -80;
+                
+                break;
+            case "C2":
+                turnAngleL = -100;
+                turnAngleR = 100;
+                break;
+            case "C3":
+                turnAngleL = 170;
+                turnAngleR = 10;
+                Debug.Log("works");
+                break;
+            case "C4":
+                turnAngleL = 350;
+                turnAngleR = 190;
+                break;
 
-        roadCheckCount = roadCheckCounter(roadCheckID.Substring(roadCheckID.Length - 7, 2));
-
-
-        Vector3 direction = waypoints[pathIndex+roadCheckCount].position - transform.position;
+            default:
+                Debug.Log("Err: Unsorted RoadCheck");
+                break;
+        }
+        Vector3 direction = waypoints[pathIndex + roadCheckCount].position - transform.position;
         transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
         RoadCheck();
 
+        Debug.Log("Escaped RoadCheck");
         agent.isStopped = false;
         roadCheckNext = false;
     }
