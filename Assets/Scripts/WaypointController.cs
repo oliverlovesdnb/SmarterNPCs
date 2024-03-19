@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using UnityEditor.Experimental.GraphView;
+using System;
 
 public class WaypointController : MonoBehaviour
 {
@@ -57,23 +58,19 @@ public class WaypointController : MonoBehaviour
             }
             if (pathIndex > 1 && isRoadCheck(pathIndex - 2 ) && isRoadCheck(pathIndex))
             {
-                int randomNumber = Random.Range(0, 2);
+                int randomNumber = UnityEngine.Random.Range(0, 2);
 
-                Debug.Log("Rnd Number" + randomNumber);
                 pathIndex -= randomNumber * 2;
                 roadCheckNext = true;
             }
             else if (isRoadCheck(pathIndex))
             {
-                Debug.Log("Road Check Next!");
                 roadCheckNext=true;
             }
             
             else if(pathIndex > 1 && isRoadCheck(pathIndex - 1))
             {
-                Debug.Log("PathIndex before" + pathIndex);
                 pathIndex -= 2;
-                Debug.Log("PathIndex now" + pathIndex);
                 roadCheckNext = true;
             }
             NextPoint();
@@ -92,40 +89,22 @@ public class WaypointController : MonoBehaviour
 
     void RoadCheckNow()
     {
-        Debug.Log("Road Check Now!");
         agent.isStopped = true;
 
         //Getting crossing ID from object name
-        string roadCheckID = waypoints[pathIndex-1].transform.name.ToString();
-        roadCheckID = roadCheckID.Substring(roadCheckID.Length-2, 2);
+        string roadCheckID = waypoints[pathIndex - 1].transform.name.ToString();
 
         //Variables relating to each crossing
-        switch (roadCheckID)
-        {
-            case "C1":
-                turnAngleL = 80;
-                turnAngleR = -80;
-                roadCheckCount = roadCheckCounter("C1");
-                Debug.Log(roadCheckCount);
-                break;
-            case "C2":
-                turnAngleL = -100;
-                turnAngleR = 100;
-                roadCheckCount = roadCheckCounter("C2");
-                Debug.Log(roadCheckCount);
-                break;
-            case "C3":
-            case "C4":
+        turnAngleL = Int32.Parse(roadCheckID.Substring(roadCheckID.Length - 4, 4));
+        turnAngleR = -turnAngleL;
 
-            default:
-                break;
-        }
+        roadCheckCount = roadCheckCounter(roadCheckID.Substring(roadCheckID.Length - 7, 2));
+
 
         Vector3 direction = waypoints[pathIndex+roadCheckCount].position - transform.position;
         transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
         RoadCheck();
 
-        Debug.Log("Escaped RoadCheck");
         agent.isStopped = false;
         roadCheckNext = false;
     }
