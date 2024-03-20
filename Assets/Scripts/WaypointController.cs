@@ -8,11 +8,11 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
-using System;
 
 public class WaypointController : MonoBehaviour
 {
+    public float lookDistance;
+
     public Transform[] waypoints;
     private NavMeshAgent agent;
 
@@ -56,19 +56,19 @@ public class WaypointController : MonoBehaviour
                 
 
             }
-            if (pathIndex > 1 && isRoadCheck(pathIndex - 2 ) && isRoadCheck(pathIndex))
+            if (pathIndex > 1 && IsRoadCheck(pathIndex - 2 ) && IsRoadCheck(pathIndex))
             {
-                int randomNumber = UnityEngine.Random.Range(0, 2);
+                int randomNumber = Random.Range(0, 2);
 
                 pathIndex -= randomNumber * 2;
                 roadCheckNext = true;
             }
-            else if (isRoadCheck(pathIndex))
+            else if (IsRoadCheck(pathIndex))
             {
                 roadCheckNext=true;
             }
             
-            else if(pathIndex > 1 && isRoadCheck(pathIndex - 1))
+            else if(pathIndex > 1 && IsRoadCheck(pathIndex - 1))
             {
                 pathIndex -= 2;
                 roadCheckNext = true;
@@ -79,7 +79,7 @@ public class WaypointController : MonoBehaviour
 
     bool CheckCarHit()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 30f, Car))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, lookDistance, Car))
         {
             if (hit.collider.CompareTag("Car")) carHit = true;
         }
@@ -95,8 +95,8 @@ public class WaypointController : MonoBehaviour
         string roadCheckID = waypoints[pathIndex - 1].transform.name.ToString();
 
         roadCheckID = roadCheckID.Substring(roadCheckID.Length - 2, 2);
-        roadCheckCount = roadCheckCounter(roadCheckID);
-        Debug.Log(roadCheckID);
+        roadCheckCount = RoadCheckCounter(roadCheckID);
+
         //Variables relating to each crossing
         switch (roadCheckID)
         {
@@ -112,7 +112,6 @@ public class WaypointController : MonoBehaviour
             case "C3":
                 turnAngleL = 170;
                 turnAngleR = 10;
-                Debug.Log("works");
                 break;
             case "C4":
                 turnAngleL = 350;
@@ -127,7 +126,6 @@ public class WaypointController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
         RoadCheck();
 
-        Debug.Log("Escaped RoadCheck");
         agent.isStopped = false;
         roadCheckNext = false;
     }
@@ -188,12 +186,12 @@ public class WaypointController : MonoBehaviour
         
     }
 
-    bool isRoadCheck(int _pathIndex)
+    bool IsRoadCheck(int _pathIndex)
     {
         return waypoints[_pathIndex].transform.name.ToString().Contains("RoadCheck");
     }
 
-    int roadCheckCounter(string id)
+    int RoadCheckCounter(string id)
     {
         int count = 0;
         for (int i = 0; i < waypoints.Length; i++)
