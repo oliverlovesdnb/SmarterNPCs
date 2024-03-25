@@ -1,10 +1,9 @@
 /*
     Code created by Oliver Fiedot-Davies, 2024
     For Maynooth University Computer Science and Software Engineering Final Year Project.
+
+    * Old test script, not used in final build. For final build NPC script, please check WaypointController.cs *
 */
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 

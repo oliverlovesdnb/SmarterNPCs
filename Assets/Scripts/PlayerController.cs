@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+/*"
+    Code created by Brogrammer, Youtube 2023: 
+    "UNITY 3D PLAYER MOVEMENT in 2 MINUTES! FPS Shooter" https://www.youtube.com/watch?v=1uW-GbHrtQc&ab_channel=Brogrammer
+
+    Reused by Oliver-Fiedot-Davies for Maynooth University Computer Science and Software Engineering Final Year Project, justification of reuse in project report.
+*/
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
