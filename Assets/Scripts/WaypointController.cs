@@ -31,8 +31,9 @@ public class WaypointController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.speed += Random.Range(0,2);
         NextPoint();
-        //Application.targetFrameRate = 30;
+        //Application.targetFrameRate = 60;
     }
 
     void Update()
@@ -150,7 +151,6 @@ public class WaypointController : MonoBehaviour
 
         if (carHit)
         {
-            Debug.Log("AAH CAR!");
             currentlyRotating = false;
         }
 
