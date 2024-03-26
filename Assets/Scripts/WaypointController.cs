@@ -33,7 +33,7 @@ public class WaypointController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed += Random.Range(0,2);
         NextPoint();
-        //Application.targetFrameRate = 60;
+       // Application.targetFrameRate = 60;
     }
 
     void Update()
