@@ -3,6 +3,8 @@
     For Maynooth University Computer Science and Software Engineering Final Year Project.
 
     Some code sampled from Unity Documentation: https://docs.unity3d.com/560/Documentation/Manual/nav-AgentPatrol.html
+    Raycat Documentation: https://docs.unity3d.com/ScriptReference/Physics.Raycast.html
+    Coroutines Documentation: https://docs.unity3d.com/Manual/Coroutines.html
 */
 
 using UnityEngine;
@@ -33,7 +35,7 @@ public class WaypointController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed += Random.Range(0,2);
         NextPoint();
-       // Application.targetFrameRate = 60;
+       // Application.targetFrameRate = 60;  //For performance issues while running this can be enabled
     }
 
     void Update()
